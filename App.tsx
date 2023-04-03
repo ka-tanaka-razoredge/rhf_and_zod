@@ -25,6 +25,7 @@ const Alpha: React.FC<Props> = ({ template }) => {
     console.log('---- doItEx begin ----');
     console.log(data);
     console.log('---- doItEx end ----');
+    throw new Error(data);
   };
 
   return template({
@@ -36,6 +37,13 @@ const Alpha: React.FC<Props> = ({ template }) => {
       }
     },
     register,
+    handleSubmitEx: async () => {
+      try {
+        await handleSubmit(doIt, doItEx)();
+      } catch (e) {
+        alert(e);
+      }
+    },
   });
 };
 
